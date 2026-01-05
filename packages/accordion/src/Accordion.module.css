@@ -1,0 +1,218 @@
+/* Luna Accordion - Notion-inspired styling */
+
+/* ============================================
+   Accordion Root
+   ============================================ */
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Default Variant - Subtle dividers like Notion */
+.default {
+  gap: 0;
+}
+
+.default .item {
+  border-bottom: 1px solid var(--luna-border-secondary);
+}
+
+.default .item:last-child {
+  border-bottom: none;
+}
+
+/* Bordered Variant - Cards with borders */
+.bordered {
+  gap: var(--luna-space-2);
+}
+
+.bordered .item {
+  border: 1px solid var(--luna-border-primary);
+  border-radius: var(--luna-radius-md);
+  overflow: hidden;
+}
+
+/* Ghost Variant - No borders, minimal style */
+.ghost {
+  gap: var(--luna-space-1);
+}
+
+.ghost .item {
+  border: none;
+}
+
+/* ============================================
+   Accordion Item
+   ============================================ */
+
+.item {
+  display: flex;
+  flex-direction: column;
+  transition: background-color var(--luna-transition-fast);
+}
+
+.item:hover {
+  background-color: var(--luna-bg-hover);
+}
+
+.item[data-state="open"] {
+  background-color: var(--luna-bg-secondary);
+}
+
+.item.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ============================================
+   Accordion Trigger (Button)
+   ============================================ */
+
+.trigger {
+  /* Reset */
+  all: unset;
+  box-sizing: border-box;
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  
+  /* Spacing - Notion's comfortable padding */
+  padding: var(--luna-space-3) var(--luna-space-4);
+  
+  /* Typography */
+  font-family: var(--luna-font-sans);
+  font-size: var(--luna-font-size-sm);
+  font-weight: var(--luna-font-weight-medium);
+  line-height: var(--luna-line-height-normal);
+  color: var(--luna-text-primary);
+  text-align: left;
+  
+  /* Interactions */
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--luna-transition-fast);
+  
+  /* Focus */
+  outline: none;
+}
+
+.trigger:hover {
+  background-color: var(--luna-bg-hover);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--luna-blue);
+  outline-offset: -2px;
+}
+
+.trigger:active {
+  background-color: var(--luna-bg-active);
+}
+
+.trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Trigger Text */
+.triggerText {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--luna-space-2);
+}
+
+/* ============================================
+   Accordion Icon (Chevron)
+   ============================================ */
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--luna-text-tertiary);
+  font-size: var(--luna-font-size-lg);
+  font-weight: var(--luna-font-weight-normal);
+  transition: transform var(--luna-transition-base);
+  transform: rotate(0deg);
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.iconOpen {
+  transform: rotate(90deg);
+}
+
+/* ============================================
+   Accordion Content
+   ============================================ */
+
+.content {
+  overflow: hidden;
+  transition: height var(--luna-transition-base) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content[data-state="closed"] {
+  display: none;
+}
+
+.contentInner {
+  /* Spacing - Indented like Notion's nested content */
+  padding: var(--luna-space-2) var(--luna-space-4) var(--luna-space-4) var(--luna-space-4);
+  
+  /* Typography */
+  font-size: var(--luna-font-size-sm);
+  line-height: var(--luna-line-height-relaxed);
+  color: var(--luna-text-secondary);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .trigger {
+    padding: var(--luna-space-2) var(--luna-space-3);
+    font-size: var(--luna-font-size-sm);
+  }
+
+  .contentInner {
+    padding: var(--luna-space-2) var(--luna-space-3) var(--luna-space-3) var(--luna-space-3);
+  }
+}
+
+/* ============================================
+   Nested Accordions
+   ============================================ */
+
+.accordion .accordion {
+  margin-left: var(--luna-space-4);
+  border-left: 2px solid var(--luna-border-secondary);
+  padding-left: var(--luna-space-2);
+}
+
+/* ============================================
+   Dark Mode Adjustments
+   ============================================ */
+
+.dark .item:hover {
+  background-color: rgba(255, 255, 255, 0.055);
+}
+
+.dark .item[data-state="open"] {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.dark .trigger:hover {
+  background-color: rgba(255, 255, 255, 0.055);
+}
+
+.dark .trigger:active {
+  background-color: rgba(255, 255, 255, 0.1);
+}

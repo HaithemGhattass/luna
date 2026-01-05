@@ -1,0 +1,54 @@
+{
+  "name": "@luna/accordion",
+  "version": "0.1.0",
+  "description": "Luna UI Accordion - A customizable accordion component",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": "./dist/accordion.css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "tsc && vite build",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "luna",
+    "ui",
+    "accordion",
+    "react",
+    "component",
+    "collapsible"
+  ],
+  "author": "Haithem Ghattas",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+    "devDependencies": {
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "@types/react": "^19.2.7",
+    "@vitejs/plugin-react": "^5.1.2",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.0",
+    "vite-plugin-dts": "^4.5.4"
+  },
+    "peerDependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+
+}
