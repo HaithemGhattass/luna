@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--luna-font-sans);
+  background-color: var(--luna-bg-primary);
+  color: var(--luna-text-primary);
+}
+
+#root {
+  min-height: 100vh;
+}
