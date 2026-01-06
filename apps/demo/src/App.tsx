@@ -6,6 +6,20 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from '@luna/accordion'
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogAction,
+  AlertDialogCancel,
+} from '@luna/alert-dialog'
+
+import '@luna/alert-dialog/styles'
+
 import '@luna/button/styles'
 import '@luna/accordion/styles'
 import './App.css'
@@ -279,6 +293,76 @@ function App() {
               </Accordion>
             </div>
           </section>
+          <section className="section">
+  <h2 className="section-title">Alert Dialog Component</h2>
+
+  <div className="demo-group">
+    <h3 className="demo-subtitle">Destructive Action</h3>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button variant="destructive">Delete Account</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction variant="destructive">
+            Delete Account
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  </div>
+
+  <div className="demo-group">
+    <h3 className="demo-subtitle">Confirmation Dialog</h3>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button variant="primary">Save Changes</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Save your changes?</AlertDialogTitle>
+          <AlertDialogDescription>
+            You have unsaved changes. Do you want to save them before leaving?
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Don't Save</AlertDialogCancel>
+          <AlertDialogAction variant="primary">Save Changes</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  </div>
+
+  <div className="demo-group">
+    <h3 className="demo-subtitle">Info Dialog</h3>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button variant="outline">View Terms</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Terms of Service</AlertDialogTitle>
+          <AlertDialogDescription>
+            By using Luna UI, you agree to our terms of service. This is a
+            demo component library for educational purposes.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogAction variant="primary">I Agree</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  </div>
+</section>
+
         </main>
 
         {/* Footer */}
