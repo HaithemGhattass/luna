@@ -24,7 +24,8 @@
     "paths": {
       "@luna/core": ["./packages/core/src"],
       "@luna/button": ["./packages/button/src"],
-      "@luna/accordion": ["./packages/accordion/src"]
+      "@luna/accordion": ["./packages/accordion/src"],
+      "@luna/alert-dialog": ["./packages/alert-dialog/src"]
     }
   }
 }

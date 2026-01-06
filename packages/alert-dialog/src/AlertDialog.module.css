@@ -1,0 +1,219 @@
+/* Luna Alert Dialog - Notion-inspired styling */
+
+/* ============================================
+   Container & Overlay
+   ============================================ */
+
+.container {
+  position: fixed;
+  inset: 0;
+  z-index: var(--luna-z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--luna-space-4);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: overlayShow 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(2px);
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   Content
+   ============================================ */
+
+.content {
+  position: relative;
+  background-color: var(--luna-bg-primary);
+  border: 1px solid var(--luna-border-primary);
+  border-radius: var(--luna-radius-lg);
+  box-shadow: var(--luna-shadow-xl);
+  width: 100%;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow-y: auto;
+  z-index: calc(var(--luna-z-modal) + 1);
+  
+  /* Animation */
+  animation: contentShow 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ============================================
+   Header
+   ============================================ */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--luna-space-2);
+  padding: var(--luna-space-6);
+  padding-bottom: var(--luna-space-4);
+}
+
+/* ============================================
+   Title
+   ============================================ */
+
+.title {
+  font-size: var(--luna-font-size-lg);
+  font-weight: var(--luna-font-weight-semibold);
+  line-height: var(--luna-line-height-tight);
+  color: var(--luna-text-primary);
+  margin: 0;
+}
+
+/* ============================================
+   Description
+   ============================================ */
+
+.description {
+  font-size: var(--luna-font-size-sm);
+  line-height: var(--luna-line-height-normal);
+  color: var(--luna-text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--luna-space-3);
+  padding: var(--luna-space-4) var(--luna-space-6) var(--luna-space-6);
+  border-top: 1px solid var(--luna-border-secondary);
+  background-color: var(--luna-bg-secondary);
+  border-bottom-left-radius: var(--luna-radius-lg);
+  border-bottom-right-radius: var(--luna-radius-lg);
+}
+
+/* ============================================
+   Trigger (optional styling)
+   ============================================ */
+
+.trigger {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 640px) {
+  .container {
+    padding: var(--luna-space-2);
+    align-items: flex-end;
+  }
+
+  .content {
+    max-width: 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    animation: contentShowMobile 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes contentShowMobile {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .header {
+    padding: var(--luna-space-4);
+  }
+
+  .footer {
+    padding: var(--luna-space-3) var(--luna-space-4) var(--luna-space-4);
+    flex-direction: column-reverse;
+  }
+
+  .footer > * {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   Dark Mode Adjustments
+   ============================================ */
+
+.dark .overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.dark .content {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
+              0 8px 16px rgba(0, 0, 0, 0.8);
+}
+
+/* ============================================
+   Focus Trap
+   ============================================ */
+
+.content:focus {
+  outline: none;
+}
+
+/* ============================================
+   Scrollbar
+   ============================================ */
+
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: var(--luna-gray-400);
+  border-radius: var(--luna-radius-full);
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: var(--luna-gray-500);
+}
+
+.dark .content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dark .content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
